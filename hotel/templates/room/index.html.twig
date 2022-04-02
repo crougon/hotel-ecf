@@ -3,6 +3,12 @@
 
 
 {% block body %}
+{%for message in app.flashes('success')%}
+
+    <div class="alert alert-success" >
+        <h3> {{message}} </h3>
+    </div>    
+{% endfor %}
 
 <br>
 <div class="container" >
@@ -14,6 +20,10 @@
             <tr>
                 <td>Name</td>    
                 <td>Description</td>
+                <td>Price</td>    
+                <td>Delete</td>
+                <td><a href=" {{path ('room.create')}} " >Create </a></td>
+
 
             </tr>
             </thead> 
@@ -22,6 +32,8 @@
                     <tr>
                         <td> {{room.name}} </td>
                         <td> {{room.description}} </td>
+                        <td> {{room.price}} </td>
+                        <td><a href=" {{path ('room.delete', {id: room.id})}} " >    X </a></td>
 
                     </tr>
                 {% endfor %}
