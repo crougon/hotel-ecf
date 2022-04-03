@@ -18,11 +18,11 @@
     <table class="table table-striped" >
         <thead>
             <tr>
-                <td>Name</td>    
+                <td>Titre</td>    
                 <td>Description</td>
-                <td>Price</td>    
-                <td>Delete</td>
-                <td><a href=" {{path ('room.create')}} " >Create </a></td>
+                <td>Prix</td>    
+                <td>Supprimer</td>
+                <td><a href=" {{path ('room.create')}} " >Créer </a></td>
 
 
             </tr>
@@ -30,7 +30,7 @@
             <tbody>
                 {% for room in rooms %}
                     <tr>
-                        <td> {{room.name}} </td>
+                        <td><a href=" {{path ('room.show', {id: room.id})}} " > {{room.name}}</a></td>
                         <td> {{room.description}} </td>
                         <td> {{room.price}} </td>
                         <td><a href=" {{path ('room.delete', {id: room.id})}} " >    X </a></td>
