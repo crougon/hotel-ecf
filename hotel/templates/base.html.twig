@@ -36,11 +36,13 @@
 			<img src="{{asset('img/logo.png')}}" alt="">
 		</a>
 		<div class="header-right">
-			<a href="#" class="hr-btn">Help</a>
-			<span>|</span>
+			
 			<div class="user-panel">
-				<a href="" class="login">Login</a>
-				<a href="" class="register">Create an account</a>
+				<a href="{{ path('app_login') }}" class="register">Login</a>
+				<!--<span>|</span>
+				<a href="{{ path('reg')}}" class="register">Créer compte</a> -->
+				<span>|</span>
+				<a href="{{ path('app_logout') }}" class="register">Logout</a>
 			</div> 
 		</div>
 		<ul class="main-menu">
