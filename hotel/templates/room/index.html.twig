@@ -20,6 +20,7 @@
             <tr>
                 <td>Titre</td>    
                 <td>Description</td>
+                <td>Hotel</td>
                 <td>Prix</td>    
                 <td>Supprimer</td>
                 <td><a href=" {{path ('room.create')}} " >Créer </a></td>
@@ -32,6 +33,7 @@
                     <tr>
                         <td><a href=" {{path ('room.show', {id: room.id})}} " > {{room.name}}</a></td>
                         <td> {{room.description}} </td>
+                        <td> {{room.category}} </td>
                         <td> {{room.price}} </td>
                         <td><a href=" {{path ('room.delete', {id: room.id})}} " >    X </a></td>
 

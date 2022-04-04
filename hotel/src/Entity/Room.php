@@ -28,6 +28,13 @@ class Room
      */
     private $image;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="room" )
+     */
+
+    private $category;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -87,6 +94,18 @@ class Room
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
