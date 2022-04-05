@@ -52,7 +52,7 @@
 			<li><a href="blog.html">News</a></li>
 			<li><a href="contact.html">Contact</a></li>
 
-			{% if is_granted('IS_AUTENTHICATED_USER') %}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			<li><a href="#">Gérant</a>
 				<ul class="sub-menu">
 					<li><a href="{{ path('room.edit')}}">Rooms</a></li>
