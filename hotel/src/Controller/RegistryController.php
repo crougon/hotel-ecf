@@ -22,7 +22,15 @@ class RegistryController extends AbstractController
     public function reg(Request $request, UserPasswordHasherInterface  $passEncoder)
     {
 
-        $regform = $this->createFormBuilder() 
+        $regform = $this->createFormBuilder()
+        ->add('lastname', TextType::class, [
+            'label' => 'Nom',
+            'attr' => ['placeholder' => 'Nom']
+        ]) 
+        ->add('name', TextType::class, [
+            'label' => 'Prénom',
+            'attr' => ['placeholder' => 'Prénom']
+        ])
         ->add('username', TextType::class,[
             'label' => 'Utilisateur',
             'attr' => ['placeholder' => 'Utilisateur']
