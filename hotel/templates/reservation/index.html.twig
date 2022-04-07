@@ -1,7 +1,21 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block body %}
+
+{% for message in app.flashes('reserver') %}
+	<div class="alert alert-success" >
+	<h3>{{ messages }}<h3>
+	<div>
+{% endfor %}
+
+<h2>hello</h2>
+
+
+
+
+
+
+
+
 
 {% endblock %}

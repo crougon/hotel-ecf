@@ -2,13 +2,6 @@
 
 {% block body %}
 
-{% for message in app.flashes('reserver') %}
-	<div class="alert alert-success" >
-	<h3>{{ messages }}<h3>
-	<div>
-{% endfor %}
-
-
 
 <br>
 <div class="container" >
@@ -21,19 +14,7 @@
 
 
 
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-<div class="container">
 
-<div>
-<br>
-{{form(resform)}}
-</div>
-
-<br>
-<a class="btn btn-outline-danger btn-sm" href=" {{path('reserve', {id: room.id})}} "  > Réserver </a>
-<!-- <a class="btn btn-outline-danger btn-sm" href=" {{path('room.show', {id: room.id})}} "  > Réserver </a> -->
-<div>
-{% endif %}
 
 
 {% endblock %}

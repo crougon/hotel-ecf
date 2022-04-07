@@ -13,11 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/room", name="app_reservation")
+ */
 class ReservationController extends AbstractController
 {
-    /**
-     * @Route("/reservation", name="app_reservation")
-     */
     public function index()
     {
         //return $this->render('reservation/index.html.twig', [
@@ -26,64 +26,22 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * @Route("/reserve/{id}", name="reserve")
+     * @Route("/rest/", name="rest")
      */
 
-    public function reserve(Room $room, ReservationRepository $res, Request $request){
+    /**
+     * @Route("/res/", name="res")
+     *///public function reserve(Room $rooms){
+//
+       // return $this->render('reservation/index.html.twig', [
+       //     'rooms' => $rooms
+       // ]);
+//
+   // }
 
-        $resform = $this->createFormBuilder()
-        ->add('email', EmailType::class, [
-            'label' => 'Email',
-            'attr' => ['placeholder' => 'email']
-        ])
-        ->add('datein', DateType::class, [
-            'label' => 'Date d\'entrée',
-            'placeholder' => [
-                'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour'
-            ]
-        ])
-        ->add('dateout', DateType::class, [
-            'label' => 'Date de sortie',
-            'placeholder' => [
-                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour'
-            ]
-        ])
-        ->add('Réserver', SubmitType::class)
-        ->getForm();   
-
-        $resform->handleRequest($request);
-
-        if ($resform->isSubmitted()){
-            $input = $resform->getData();
-
-            $reservation = new Reservation();
-
-            $reservation->setEmail($input['email']);
-
-            $reservation->setDatein($input['datein']);
-
-            $reservation->setDateout($input['dateout']);
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($reservation);
-            $em->flush();
-
-
-
-            $this->addFlash('reserver', 'La chambre a été réservé');
     
-            return $this->redirect($this->generateUrl('home'));
-        
-        }
 
-        return $this->render('room/show/{id}.html.twig', [
-            'resform' => $resform->createView()
-        ]);
-        
-        
-        
-        
-    }
+    
     
     
 }

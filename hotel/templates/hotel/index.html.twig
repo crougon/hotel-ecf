@@ -43,7 +43,7 @@
 						<h5>{{room.name}} - EUR {{room.price}} </h5>
 						<p> {{room.description}} </p>
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-						<a class="btn btn-outline-danger btn-sm" href=" {{path('room.show', {id: room.id})}} "  > Réserver </a>
+						<a class="btn btn-outline-danger btn-sm" href=" {{path('room.res', {id: room.id})}} "  > Réserver </a>
 						{% endif %}
 						
 					</div>

@@ -85,7 +85,7 @@ class RoomController extends AbstractController
         $em->flush();
 
         //messagge
-        $this->addFlash('success', 'Room was remove successfully' );
+        $this->addFlash('success', 'Room was removed successfully' );
 
         return $this->redirect($this->generateUrl('room.edit'));
     }
@@ -102,5 +102,16 @@ class RoomController extends AbstractController
 
     }
 
-    
+    /**
+     * @Route("/res/{id}", name="res")
+     */
+
+    public function reserve(Room $room){
+
+        return $this->render('reservation/index.html.twig', [
+            'room' => $room
+        ]);
+
+    }
+
 }
