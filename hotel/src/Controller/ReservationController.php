@@ -14,30 +14,108 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/room", name="app_reservation")
+ * @Route("/room", name="reservations")
  */
 class ReservationController extends AbstractController
 {
     public function index()
     {
-        //return $this->render('reservation/index.html.twig', [
-        //    'controller_name' => 'ReservationController',
-        //]);
+        
+    }
+
+
+    /**
+     * @Route("/res/{id}", name="res")
+     */
+
+    public function reserve(Request $request ){
+        
+        $resform = $this->createFormBuilder()
+            ->add('datein', DateType::class, [
+                'widget' => 'choice',
+                'label' => 'Date d\'entrée'
+            ])
+            ->add('dateout', DateType::class, [
+                'widget' => 'choice',
+                'label' => 'Date d\'entrée'
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'attr' => ['placeholder' => 'Email']
+            ])
+            ->add('Enregistrer', SubmitType::class)
+            ->getForm()
+        ;
+
+        $resform->handleRequest($request);
+
+        if($resform->isSubmitted()){
+            $input = $resform->getData();
+
+            $res = new Reservation();
+            $res->setDatein($input['datein']);
+
+            $res->setDateout($input['dateout']);
+
+            $res->setEmail($input['email']);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($res);
+            $em->flush();
+
+            
+
+            $this->addFlash('res', 'Votre réservation a été prise en compte, merci de régler sur place' );
+
+
+            //return $this->redirect($this->generateUrl('home'));
+        }
+
+        
+    
+
+        return $this->render('reservation/index.html.twig', [
+            'resform' => $resform->createView()
+        ]);
+
+    }
+
+
+    /**
+     * @Route("/reservations", name="reserved")
+     */
+
+
+    public function show(ReservationRepository $resrep)
+    {
+        $res = $resrep->findAll();
+
+        return $this->render('reservation/res.html.twig', [
+            'res' => $res
+        ]);
+
     }
 
     /**
-     * @Route("/rest/", name="rest")
+     * @Route("/reservations/delete/{id}", name="reservedDelete")
      */
 
-    /**
-     * @Route("/res/", name="res")
-     *///public function reserve(Room $rooms){
-//
-       // return $this->render('reservation/index.html.twig', [
-       //     'rooms' => $rooms
-       // ]);
-//
-   // }
+
+     public function delete($id, ReservationRepository $resdel){
+        $em = $this->getDoctrine()->getManager();
+        $res = $resdel->find($id);
+        $em->remove($res);
+        $em->flush();
+
+        //messagge
+        $this->addFlash('success', 'La réservation a été supprimé avec succès' );
+        return $this->redirect($this->generateUrl('reservationsreserved'));
+
+     }
+
+
+
+    
 
     
 
@@ -46,10 +124,3 @@ class ReservationController extends AbstractController
     
 }
 
-//--------------------------
-
-//$reservation = new Reservation();
-//$reservation->setDatein($res->getDatein());
-//$reservation->setDateout($res->getDateOut());
-//$reservation->setPrice($room->getPrice());
-//$reservation->setStatus("Réservé");

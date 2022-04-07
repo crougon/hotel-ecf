@@ -2,13 +2,17 @@
 
 {% block body %}
 
-{% for message in app.flashes('reserver') %}
-	<div class="alert alert-success" >
-	<h3>{{ messages }}<h3>
-	<div>
-{% endfor %}
+{%for message in app.flashes('res')%}
 
-<h2>hello</h2>
+    <div class="alert alert-success" >
+        <h3> {{message}} </h3>
+		
+    </div>    
+{% endfor %}
+<br>
+<div class="container" >
+	{{form(resform)}}
+</div>
 
 
 

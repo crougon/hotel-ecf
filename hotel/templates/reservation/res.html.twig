@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+{%for message in app.flashes('success')%}
+
+    <div class="alert alert-success" >
+        <h3> {{message}} </h3>
+    </div>    
+{% endfor %}
+
+<br>
+<div class="container" >
+    
+    <h2> Réservations </h2>
+    <br>
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <td>Entrée</td>    
+                <td>Sortie</td>
+                <td>Email</td>   
+                <td>Supprimer</td>
+            </tr>
+            </thead> 
+            <tbody>
+                {% for re in res %}
+                    <tr>
+                        
+                        <td> {{ re.datein|date("m/d/Y") }} </td>
+                        <td> {{re.dateout|date("m/d/Y")}} </td> 
+                        <td> {{re.email}} </td>
+                        <td><a href=" {{path ('reservationsreservedDelete', {id: re.id})}} " >    X </a></td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+    </table>
+</div>
+{% endblock %}

@@ -28,7 +28,7 @@ class Reservation
     private $dateout;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $price;
 

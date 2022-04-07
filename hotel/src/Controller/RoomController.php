@@ -2,10 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Reservation;
 use App\Entity\Room;
 use App\Form\RoomType;
 use App\Repository\RoomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -85,7 +89,7 @@ class RoomController extends AbstractController
         $em->flush();
 
         //messagge
-        $this->addFlash('success', 'Room was removed successfully' );
+        $this->addFlash('success', 'La chambre a été supprimé avec succès' );
 
         return $this->redirect($this->generateUrl('room.edit'));
     }
@@ -106,11 +110,15 @@ class RoomController extends AbstractController
      * @Route("/res/{id}", name="res")
      */
 
-    public function reserve(Room $room){
+    public function reserve(Request $request ){
+        
+        
+        
+    
 
-        return $this->render('reservation/index.html.twig', [
-            'room' => $room
-        ]);
+        //return $this->render('reservation/index.html.twig', [
+        //    'resform' => ->createView()
+        //]);
 
     }
 

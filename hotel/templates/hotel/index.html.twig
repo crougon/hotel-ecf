@@ -13,14 +13,19 @@
 	
 	<section class="playlist-section spad">
 		<div class="container-fluid">
-			<div class="section-title">
 				<h2>Chambres</h2>
+			<div class="section-title">
+				<br>
+				<br>
 			</div>
 			<div class="container">
 			{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+				<br>
+				<br>
 				<p> Merci de vous conecter pour pouvoir reserver une chambre <a href="{{ path('app_login')}}" class="register">Login</a> </p>	
 			{% endif %}
 			</div> 
+			<br>
 			<div class="container">
 				<ul class="playlist-filter controls">
 					<li class="control" data-filter=".Toulouse">Toulouse</li>
