@@ -5,10 +5,13 @@ namespace App\Controller;
 use App\Entity\Reservation;
 use App\Entity\Room;
 use App\Repository\ReservationRepository;
+use App\Repository\RoomRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -43,6 +46,12 @@ class ReservationController extends AbstractController
                 'label' => 'Email',
                 'attr' => ['placeholder' => 'Email']
             ])
+            //-----------
+            ->add('status', TextType::class, [
+                'label' => 'Chambre',
+                'attr' => ['placeholder' => 'Quelle chambre voulez-vous réserver']
+            ] )
+            //-----------
             ->add('Enregistrer', SubmitType::class)
             ->getForm()
         ;
@@ -56,6 +65,8 @@ class ReservationController extends AbstractController
             $res->setDatein($input['datein']);
 
             $res->setDateout($input['dateout']);
+
+            $res->setStatus($input['status']);
 
             $res->setEmail($input['email']);
 
@@ -95,6 +106,34 @@ class ReservationController extends AbstractController
         ]);
 
     }
+
+    //-----------------------------------------
+
+    
+
+
+
+
+
+
+    //-----------------------------------------
+
+
+    
+
+
+
+
+
+
+    //-----------------------------------------
+
+
+
+
+
+
+
 
     /**
      * @Route("/reservations/delete/{id}", name="reservedDelete")

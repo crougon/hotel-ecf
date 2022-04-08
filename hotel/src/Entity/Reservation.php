@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,7 +37,7 @@ class Reservation
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $status;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
