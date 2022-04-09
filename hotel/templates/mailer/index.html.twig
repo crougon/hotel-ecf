@@ -1,0 +1,14 @@
+{% apply inline_css %}
+<style>
+    h1{
+        color: #5a03fc;
+    }
+</style>
+
+<h1> Bonjour cher/e <!-- dynamic content user.username --> </h1>*
+
+<p>
+    Votre réservation de <!-- room.name/ name --> à <!-- room.category/city --> de <!-- res.datein / date entrée --> au <!-- res.dateout / daté sortie --> a été bien enregistrée 
+</p>
+
+{% endapply %}
