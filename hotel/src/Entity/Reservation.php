@@ -43,6 +43,16 @@ class Reservation
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +114,30 @@ class Reservation
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(?string $Category): self
+    {
+        $this->Category = $Category;
 
         return $this;
     }

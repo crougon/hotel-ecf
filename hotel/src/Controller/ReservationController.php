@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Reservation;
 use App\Entity\Room;
 use App\Repository\ReservationRepository;
@@ -31,7 +32,8 @@ class ReservationController extends AbstractController
      * @Route("/res/{id}", name="res")
      */
 
-    public function reserve(Request $request ){
+    public function reserve(Request $request, Room $room ){
+        $reserv = new Reservation();
         
         $resform = $this->createFormBuilder()
             ->add('datein', DateType::class, [
@@ -48,8 +50,8 @@ class ReservationController extends AbstractController
             ])
             //-----------
             ->add('status', TextType::class, [
-                'label' => 'Chambre',
-                'attr' => ['placeholder' => 'Quelle chambre voulez-vous réserver']
+                'label' => ' Nom',
+                'attr' => ['placeholder' => 'Nom Prénom']
             ] )
             //-----------
             ->add('Enregistrer', SubmitType::class)
@@ -69,6 +71,10 @@ class ReservationController extends AbstractController
             $res->setStatus($input['status']);
 
             $res->setEmail($input['email']);
+
+            $res->setName($room->getName());
+
+            $res->setCategory($room->getCategory());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($res);

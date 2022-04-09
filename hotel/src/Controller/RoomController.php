@@ -104,13 +104,19 @@ class RoomController extends AbstractController
             'room' => $room
         ]);
 
-    }
+    }  
+
+    //-----------------------------------------
+
+
+
+    //-----------------------------------------
 
     /**
      * @Route("/res/{id}", name="res")
      */
 
-    public function reserve(Request $request ){
+    public function reserve(Request $request, Room $room){
         
         
         

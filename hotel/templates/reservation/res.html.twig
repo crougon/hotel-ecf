@@ -18,7 +18,9 @@
     <table class="table table-striped" >
         <thead>
             <tr>
-                <td>Chambre</td>    
+                <td>Chambre</td> 
+                <td>Hotel</td> 
+                <td>Client</td>    
                 <td>Entrée</td>    
                 <td>Sortie</td>
                 <td>Email</td>   
@@ -26,10 +28,14 @@
             </tr>
             </thead> 
             <tbody>
+
+                
                 
                 {% for re in res %}
                     <tr>
 
+                        <td> {{re.name}} </td>       
+                        <td> {{re.category}} </td>       
                         <td> {{re.status}} </td>    
                         <td> {{ re.datein|date("m/d/Y") }} </td>
                         <td> {{re.dateout|date("m/d/Y")}} </td> 
