@@ -15,7 +15,7 @@
                             <h2><span>{{rooms1.name}}</span> !</h2>
                             <p> Confort et romance {{rooms1.description}} pour {{rooms1.price}} € </p>
                             <a href="{{ path('hotel')}}" class="site-btn">Chambres</a>
-                            <a href="#" class="site-btn sb-c2">Reserver</a>
+                            <a href="{{ path('reservationsres', {id: rooms1.id} )}}" class="site-btn sb-c2">Reserver</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -34,7 +34,7 @@
                             <h2><span>{{rooms2.name}}</span> !</h2>
                             <p> Confort et romance {{rooms2.description}} pour {{rooms2.price}} € </p>
                             <a href="{{ path('hotel')}}" class="site-btn">Chambres</a>
-                            <a href="#" class="site-btn sb-c2">Reserver</a>
+                            <a href="{{ path('reservationsres', {id: rooms2.id} )}}" class="site-btn sb-c2">Reserver</a>
                         </div>
                     </div>
                     <div class="col-lg-6">

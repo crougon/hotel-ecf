@@ -76,6 +76,10 @@ class ReservationController extends AbstractController
 
             $res->setCategory($room->getCategory());
 
+            $res->setPrice($room->getPrice());
+
+            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($res);
             $em->flush();
@@ -103,9 +107,12 @@ class ReservationController extends AbstractController
      */
 
 
+    
     public function show(ReservationRepository $resrep)
     {
+        
         $res = $resrep->findAll();
+
 
         return $this->render('reservation/res.html.twig', [
             'res' => $res

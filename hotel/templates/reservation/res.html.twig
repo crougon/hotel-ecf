@@ -37,9 +37,10 @@
                         <td> {{re.name}} </td>       
                         <td> {{re.category}} </td>       
                         <td> {{re.status}} </td>    
-                        <td> {{ re.datein|date("m/d/Y") }} </td>
+                        <td> {{re.datein|date("m/d/Y") }} </td>
                         <td> {{re.dateout|date("m/d/Y")}} </td> 
                         <td> {{re.email}} </td>
+                        
                         <td><a href=" {{path ('reservationsreservedDelete', {id: re.id})}} " >    X </a></td>
                         
                     </tr>
