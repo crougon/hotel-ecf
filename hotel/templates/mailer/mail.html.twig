@@ -1,0 +1,20 @@
+{% apply inline_css %}
+
+<style>
+
+    h3{
+        color: #5a03fc;
+    }
+
+</style>
+
+<h1> Nouveau message </h1>
+<h3>
+    L'utilisateur {{from}} a envoyé le message suivant
+</h3>
+
+<p>
+    {{text}}
+</p>
+
+{% endapply %}

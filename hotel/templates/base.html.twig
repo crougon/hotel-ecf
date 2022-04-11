@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>SolMusic | HTML Template</title>
+	<title>Hotel Hypnos</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="SolMusic HTML Template">
 	<meta name="keywords" content="music, html">
@@ -49,8 +49,8 @@
 		<ul class="main-menu">
 			<li><a href="{{ path('home')}}">Home</a></li>
 			<li><a href="{{ path('hotel')}}">Chambres</a></li>
-			<li><a href="blog.html">News</a></li>
-			<li><a href="contact.html">Contact</a></li>
+			<li><a href="{{ path('mail')}}">Contact</a></li>
+			
 
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			<li><a href="#">Gérant</a>
