@@ -29,8 +29,9 @@ class MailerController extends AbstractController
                 'attr' => array('rows' => '5')
             ])
             ->add('send', SubmitType::class, [
+                'label' => 'envoyer',
                 'attr' => [
-                    'class' => 'btn btn-outline-danger  float-right'
+                    'class' => 'btn btn-primary  float-left'
                 ]
             ])
 

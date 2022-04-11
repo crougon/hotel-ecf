@@ -3,8 +3,8 @@
 <head>
 	<title>Hotel Hypnos</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="SolMusic HTML Template">
-	<meta name="keywords" content="music, html">
+	<meta name="description" content="">
+	<meta name="keywords" content="html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- Favicon -->
@@ -33,7 +33,7 @@
 	<!-- Header section -->
 	<header class="header-section clearfix">
 		<a href="{{ path('home')}}" class="site-logo">
-			<img src="{{asset('img/logo.png')}}" alt="">
+			<img src="{{asset('img/logo.jpg')}}" alt="logo" width="80" height="80">
 		</a>
 		<div class="header-right">
 			
@@ -76,12 +76,16 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="section-title">
-						<h2>Unlimited Access to 100K tracks</h2>
+						<h2>Bienvenue dans une oasis de luxe et tranquillité</h2>
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
-					<a href="#" class="site-btn">Try it now</a>
+					<p>Hypnos est un groupe hôtelier fondé en 2004. Propriétaire de 7 établissements dans les quatre
+					coins de l’hexagone, chacun de ces hôtels s’avère être une destination idéale pour les couples
+					en quête d’un séjour romantique à deux.
+					Chaque suite au design luxueux inclut des services hauts de gamme (un spa privatif
+					notamment), de quoi plonger pleinement dans une atmosphère chic-romantique. </p>
+					<a href="{{ path('hotel') }}" class="site-btn">dorlotez-vous</a>
 				</div>
 			</div>
 		</div>
@@ -98,43 +102,37 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="footer-widget">
-								<h2>About us</h2>
+								<h2>Nous</h2>
 								<ul>
-									<li><a href="">Our Story</a></li>
-									<li><a href="">Sol Music Blog</a></li>
-									<li><a href="">History</a></li>
+									<li><a href="{{ path('home') }}">Bienvenue</a></li>
+									<li><a href="{{ path('hotel') }}">Chambres</a></li>
+									<li><a href="{{ path('mail') }}">Contactez-nous</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="footer-widget">
-								<h2>Products</h2>
+								<h2>Hotel</h2>
 								<ul>
-									<li><a href="">Music</a></li>
-									<li><a href="">Subscription</a></li>
-									<li><a href="">Custom Music</a></li>
-									<li><a href="">Footage</a></li>
+									<li><a href="{{ path('hotel') }}">Toulouse</a></li>
+									<li><a href="{{ path('hotel') }}">Paris</a></li>
+									<li><a href="{{ path('hotel') }}">Bordeaux</a></li>
+									<li><a href="{{ path('hotel') }}">Lyon</a></li>
+									<li><a href="{{ path('hotel') }}">Montpellier</a></li>
+									<li><a href="{{ path('hotel') }}">Lille</a></li>
+									<li><a href="{{ path('hotel') }}">Nantes</a></li>
+									
 								</ul>
 							</div>
 						</div>
-						<div class="col-sm-4">
-							<div class="footer-widget">
-								<h2>Playlists</h2>
-								<ul>
-									<li><a href="">Newsletter</a></li>
-									<li><a href="">Careers</a></li>
-									<li><a href="">Press</a></li>
-									<li><a href="">Contact</a></li>
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-5 order-lg-1">
 					<img src="{{asset('img/logo.png')}}" alt="">
-					<div class="copyright">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
-</div>
+					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a> -->
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 					<div class="social-links">
 						<a href=""><i class="fa fa-instagram"></i></a>
 						<a href=""><i class="fa fa-pinterest"></i></a>
