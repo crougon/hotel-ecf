@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>Créer nouveau</h1>
+
+    {{ include('liste/_form.html.twig') }}
+
+    <a href="{{ path('liste') }}">revenir à la liste</a>
+{% endblock %}
