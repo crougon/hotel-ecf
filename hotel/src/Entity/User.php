@@ -6,12 +6,26 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+
+    public static function loadValidatorMetada(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('rawPassword', new Assert\NotCompromisedPassword([
+            'message' => 'ce mot de passe a été divulgué, merci d\'essayer un autre mot de passe'
+        ]));
+    }
+
+    private $rawPassword;
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -105,6 +119,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getRawPassword(): string
+    {
+        return $this->rawPassword;
+    }
+
+    public function setRawPassword(string $rawPassword): self
+    {
+        $this->rawPassword = $rawPassword;
 
         return $this;
     }

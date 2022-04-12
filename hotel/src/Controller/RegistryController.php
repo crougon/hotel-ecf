@@ -12,14 +12,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RegistryController extends AbstractController
 {
     /**
      * @Route("/reg", name="reg")
      */
-    public function reg(Request $request, UserPasswordHasherInterface  $passEncoder)
+    public function reg(Request $request, UserPasswordHasherInterface  $passEncoder, ValidatorInterface $validator)
     {
 
         $regform = $this->createFormBuilder()
@@ -54,23 +54,35 @@ class RegistryController extends AbstractController
 
             $user = new User();
             $user->setUsername($input['username']);
+            $user->setName($input['name']);
+            $user->setLastname($input['lastname']);
 
             $user->setPassword(
                 $passEncoder->hashPassword($user, $input['password'])
             );
+            $user->setRawPassword($input['password']);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+                $errors = $validator->validate($user);
+                if (count($errors)>0)
+                {
+                    return $this->render('registry/index.html.twig', [
+                        'regform' => $regform->createView(),
+                        'errors' => $errors
+                    ]);
+                }else {
+
+                    
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+                }
 
             return $this->redirect($this->generateUrl('home'));
         }
 
-
-
-
         return $this->render('registry/index.html.twig', [
-            'regform' => $regform->createView()
+            'regform' => $regform->createView(),
+            'errors' => null
         ]);
     }
 }
