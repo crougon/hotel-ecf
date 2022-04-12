@@ -52,7 +52,8 @@
 			<li><a href="{{ path('mail')}}">Contact</a></li>
 			
 
-			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			
+			{% if is_granted('ROLE_MANAGER') %}
 			<li><a href="#">Gérant</a>
 				<ul class="sub-menu">
 					<li><a href="{{ path('room.edit')}}">Rooms</a></li>

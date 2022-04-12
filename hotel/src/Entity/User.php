@@ -15,7 +15,13 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
+    public function isGranted($role)
+    {
+        return in_array($role, $this->getRoles());
+    }
 
+
+    
     public static function loadValidatorMetada(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('rawPassword', new Assert\NotCompromisedPassword([
