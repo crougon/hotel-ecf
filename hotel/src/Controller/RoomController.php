@@ -108,10 +108,6 @@ class RoomController extends AbstractController
 
     //-----------------------------------------
 
-
-
-    //-----------------------------------------
-
     /**
      * @Route("/res/{id}", name="res")
      */
@@ -128,4 +124,26 @@ class RoomController extends AbstractController
 
     }
 
+    //-------------------------------------------------------
+
+    // edit
+
+    /**
+     * @Route("/modif/{id}", name="modif", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Room $room, RoomRepository $roomRep): Response
+    {
+        $form = $this->createForm(RoomType::class, $room);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $roomRep->add($room);
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('room/edit.html.twig', [
+            'liste' => $room,
+            'form' => $form,
+        ]);
+    }
 }

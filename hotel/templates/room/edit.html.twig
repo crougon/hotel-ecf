@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit room{% endblock %}
+
+{% block body %}
+<div class="container" >
+    <h1>Editer Chambre</h1>
+
+    {{ include('liste/_form.html.twig', {'button_label': 'Editer'}) }}
+
+    <a href="{{ path('home') }}">Revenir </a>
+
+    {{ include('liste/_delete_form.html.twig') }}
+</div>
+{% endblock %}
