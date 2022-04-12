@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Liste;
 use App\Entity\Reservation;
 use App\Entity\Room;
 use App\Entity\User;
@@ -37,8 +38,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Hotel');
         yield MenuItem::linkToCrud('Suites', 'fa fa-solid fa-bed', Room::class);
         yield MenuItem::linkToCrud('Ville', 'fa fa-solid fa-city', Category::class);
-        //yield MenuItem::linkToCrud('Ville', 'fa fa-solid fa-city', Reservation::class);
-        //yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-solid fa-user', User::class);
+        yield MenuItem::linkToCrud('Réservations', 'fa fa-solid fa-city', Reservation::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-solid fa-user', User::class);
+        yield MenuItem::linkToCrud('Contacts', 'fa fa-solid fa-user', Liste::class);
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
