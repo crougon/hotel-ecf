@@ -47,6 +47,8 @@
 						<img src=" {{asset('images/' ~ room.image)}} ">
 						<h5>{{room.name}} - EUR {{room.price}} </h5>
 						<p> {{room.description}} </p>
+						<a href=" {{path ('room.show', {id: room.id})}} " > Voir Suite</a>
+						<br>
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 						<a class="btn btn-outline-danger btn-sm" href=" {{path('room.res', {id: room.id})}} "  > Réserver </a>
 						{% endif %}

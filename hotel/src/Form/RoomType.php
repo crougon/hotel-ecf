@@ -25,14 +25,41 @@ class RoomType extends AbstractType
             ])
             ->add('image', FileType::class, [
                 //'class' => Images::class,
-                'label' => 'Joindre des images',
+                'label' => 'Joindre photo profil suite',
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false
 
             ])
+            ->add('description', )
+            ->add('category', EntityType::class, [
+                'class' =>Category::class,
+                'label' => 'Hotel'
+            ])
+            ->add('price', NumberType::class, [
+                'label' => 'Prix'
+            ])
+
+            //---------------------------
             
-            //->add('image', EntityType::class, [
+            ->add('galeries', FileType::class, [
+                'label' => 'Galerie d\'images',
+                'multiple' => true,
+                // --
+                'mapped' => false,
+                'required' => false
+            ])
+
+            //---------------------------
+
+
+            
+            ->add('save', SubmitType::class, [
+                'label' => 'Enregistrer'
+            ])
+        ;
+
+        //->add('image', EntityType::class, [
             //    'class' => Images::class,
             //    
             //    //'class' => FileType::class,
@@ -44,19 +71,6 @@ class RoomType extends AbstractType
             //    'empty_data' => ''
             //    //
             //])
-            ->add('description', )
-            ->add('category', EntityType::class, [
-                'class' =>Category::class,
-                'label' => 'Hotel'
-            ])
-            ->add('price', NumberType::class, [
-                'label' => 'Prix'
-            ])
-            
-            ->add('save', SubmitType::class, [
-                'label' => 'Enregistrer'
-            ])
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

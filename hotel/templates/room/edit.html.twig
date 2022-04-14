@@ -7,9 +7,30 @@
     <h1>Editer Chambre</h1>
 
     {{ include('liste/_form.html.twig', {'button_label': 'Editer'}) }}
+    
+    <h2> Galerie </h2>
 
-    <a href="{{ path('home') }}">Revenir </a>
+   {% for image in liste.galeries  %}
+       <div>
+            <img src={{asset('galeries/' ~ image.name) }} width="250"  >
+            <a href=" {{path('room.sup_img', {id: image.id })}} "
+            data-delete data-token=" {{ csrf_token('delete' ~ image.id) }} "
+            > X </a>
+       </div>
+   {% endfor %}
 
-    {{ include('liste/_delete_form.html.twig') }}
+   <br>
+   <a class="btn btn-outline-success btn-sm" href=" {{path ('room.modif', {id: liste.id})}} " >   Mettre à jour Galerie </a>
+   <br>
+   
+   <br>
+   
+
+    <a class="btn btn-outline-warning btn-sm" href="{{ path('home') }}">Revenir </a>
+
+    
 </div>
+    <script src=" {{ asset('js/galeries.js') }} "></script>
 {% endblock %}
+{% block javascripts %}
+{% endblock  %}

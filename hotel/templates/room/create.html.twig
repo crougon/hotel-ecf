@@ -3,8 +3,25 @@
 {% block body %}
 <br>
 <div class="container" >
-    
+{{ form_start(createForm) }}  
+
+{% if app.request.attributes.get('_route') == 'room.modif' %}
+    <h2> Galerie </h2>
+
+   {% for image in room.galeries  %}
+       <div>
+            <img src={{asset('galeries/' ~ image.name) }} width="150"  >
+            <a href=" {{path('sup_img', {id: image.id })}} "
+            data-delete data-token=" {{ csrt_token('delete' ~ image.id) }} "
+            > X </a>
+       </div>
+   {% endfor %}
+
+{% endif %}
 {{form(createForm)}}    
+
+
+{{ form_end(createForm) }}
     
 </div>
 {% endblock %}

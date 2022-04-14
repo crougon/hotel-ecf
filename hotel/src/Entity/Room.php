@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RoomRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -64,6 +66,17 @@ class Room
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $email;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Galerie::class, mappedBy="room",
+     *  orphanRemoval=true, cascade={"persist"} )
+     */
+    private $galeries;
+
+    public function __construct()
+    {
+        $this->galeries = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -174,6 +187,36 @@ class Room
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Galerie>
+     */
+    public function getGaleries(): Collection
+    {
+        return $this->galeries;
+    }
+
+    public function addGalery(Galerie $galery): self
+    {
+        if (!$this->galeries->contains($galery)) {
+            $this->galeries[] = $galery;
+            $galery->setRoom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGalery(Galerie $galery): self
+    {
+        if ($this->galeries->removeElement($galery)) {
+            // set the owning side to null (unless already changed)
+            if ($galery->getRoom() === $this) {
+                $galery->setRoom(null);
+            }
+        }
 
         return $this;
     }

@@ -7,8 +7,17 @@
 <div class="container" >
     
 <h1> {{room.name}} </h1>  
-<img src={{asset('images/' ~ room.image)}} 
+<img src={{asset('images/' ~ room.image)}} >
 
+<!-- -->
+{% for image in room.galeries  %}
+       <div>
+            <img src={{asset('galeries/' ~ image.name) }}   >
+            
+       </div>
+   {% endfor %}
+
+<!-- -->
 </div>
 
 
