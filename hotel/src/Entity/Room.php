@@ -73,6 +73,16 @@ class Room
      */
     private $galeries;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="rooms")
+     */
+    private $User;
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $hotelId;
+
     public function __construct()
     {
         $this->galeries = new ArrayCollection();
@@ -217,6 +227,30 @@ class Room
                 $galery->setRoom(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
+
+        return $this;
+    }
+
+    public function getHotelId(): ?int
+    {
+        return $this->hotelId;
+    }
+
+    public function setHotelId(?int $hotelId): self
+    {
+        $this->hotelId = $hotelId;
 
         return $this;
     }

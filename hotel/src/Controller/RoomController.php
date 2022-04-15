@@ -5,8 +5,11 @@ namespace App\Controller;
 use App\Entity\Galerie;
 use App\Entity\Reservation;
 use App\Entity\Room;
+use App\Entity\User;
 use App\Form\RoomType;
 use App\Repository\RoomRepository;
+use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -25,6 +28,8 @@ class RoomController extends AbstractController
 {
     /**
      * @Route("/", name="edit")
+     * @IsGranted("ROLE_MANAGER")
+     * 
      */
     public function index(RoomRepository $ro): Response
     {
@@ -38,11 +43,11 @@ class RoomController extends AbstractController
 
     /**
      * @Route("/create", name="create")
+     * @IsGranted("ROLE_MANAGER")
      */
 
 
     public function create(Request $request){
-        $this->denyAccessUnlessGranted('ROLE_MANAGER');
         $room = new Room();
         // form
         $form = $this->createForm(RoomType::class, $room);
@@ -106,10 +111,11 @@ class RoomController extends AbstractController
 
     /**
      * @Route("/delete/{id}", name="delete")
+     * 
+     * 
      */
 
     public function delete($id, RoomRepository $rr ){
-        $this->denyAccessUnlessGranted('ROLE_MANAGER');
         $em = $this->getDoctrine()->getManager();
         $room = $rr->find($id);
         $em->remove($room);
@@ -157,11 +163,13 @@ class RoomController extends AbstractController
 
     /**
      * @Route("/modif/{id}", name="modif", methods={"GET", "POST"})
+     * @IsGranted("ROLE_MANAGER")
      * 
      */
     public function edit(Request $request, Room $room, RoomRepository $roomRep): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_MANAGER');
+        
+
         $form = $this->createForm(RoomType::class, $room);
         $form->handleRequest($request);
 
@@ -230,10 +238,11 @@ class RoomController extends AbstractController
  
  /**
   * @Route("/sup/image/{id}", name="sup_img", methods={"DELETE"})
+  * 
   */
   
   public function deleteImage(Galerie $gal, Request $request){
-    $this->denyAccessUnlessGranted('ROLE_MANAGER');
+
       $data = json_decode($request->getContent(), true);
       
       // vérifier si le token est valide
@@ -254,5 +263,20 @@ class RoomController extends AbstractController
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
     }
+    // ----------------------------------
+
+    public function getId(UserRepository $user){
+        $users = $user->findAll($this->getId($user));
+
+        
+        
+        return $this->renderForm('room/create.html.twig', [
+            'user' => $users
+        ]);
+    }
+
+
+
+
     // ----------------------------------
 }

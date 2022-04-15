@@ -32,6 +32,9 @@
                 
                 
                 {% for re in res %}
+                
+                
+                
                     <tr>
 
                         <td> {{re.name}} </td>       
@@ -44,6 +47,7 @@
                         <td><a href=" {{path ('reservationsreservedDelete', {id: re.id})}} " >    X </a></td>
                         
                     </tr>
+                
                 {% endfor %}
             </tbody>
 

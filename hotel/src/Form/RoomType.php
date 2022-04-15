@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Category;
 use App\Entity\Images;
 use App\Entity\Room;
+use App\Entity\User;
 use Doctrine\DBAL\Types\StringType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -50,6 +51,12 @@ class RoomType extends AbstractType
                 'required' => false
             ])
 
+            //---------------------------
+            ->add('hotelId', NumberType::class,[
+                'label' => 'HOTEL ID',
+                'attr' => ['placeholder' => 'Merci de saisir le # Hôtel ID affiché en haute de formulaire']
+            ])
+            
             //---------------------------
 
 

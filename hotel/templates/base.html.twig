@@ -53,7 +53,7 @@
 			
 
 			
-			{% if is_granted('ROLE_MANAGER') %}
+			{% if is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN') %}
 			<li><a href="#">Gérant</a>
 				<ul class="sub-menu">
 					<li><a href="{{ path('room.edit')}}">Rooms</a></li>

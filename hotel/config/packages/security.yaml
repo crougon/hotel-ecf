@@ -45,9 +45,12 @@ security:
     access_control:
          - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/reg, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/room, roles: ROLE_USER } 
+       #  - { path: ^/room, roles: ROLE_USER } 
+         - { path: ^/room, roles: IS_AUTHENTICATED_ANONYMOUSLY } 
+         - { path: ^/room/create, roles: [ROLE_MANAGER, ROLE_ADMIN ] } 
+         - { path: ^/room/edit/, roles: [ROLE_MANAGER, ROLE_ADMIN ] } 
          
-         - { path: ^/liste, roles: ROLE_MANAGER } 
+         - { path: ^/liste, roles: [ROLE_MANAGER, ROLE_ADMIN ] } 
          - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/admin, roles: ROLE_MANAGER }
 

@@ -3,7 +3,12 @@
 {% block body %}
 <br>
 <div class="container" >
-{{ form_start(createForm) }}  
+{{ form_start(createForm) }} 
+{% if app.user %}
+        <div class="mb-3">
+             <h2> Hôtel ID #: {{ app.user.id }} </h2>
+        </div>
+    {% endif %}
 
 {% if app.request.attributes.get('_route') == 'room.modif' %}
     <h2> Galerie </h2>

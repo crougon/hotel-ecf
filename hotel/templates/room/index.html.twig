@@ -31,14 +31,23 @@
             </thead> 
             <tbody>
                 {% for room in rooms %}
+                
+                {% if  app.user.id  == room.hotelId or is_granted('ROLE_ADMIN')  %}
+                  
+                
                     <tr>
-                        <td><a href=" {{path ('room.show', {id: room.id})}} " > {{room.name}}</a></td>
+                   
+                        <td><a class="btn btn-outline-primary btn-sm" href=" {{path ('room.show', {id: room.id})}} " > {{room.name}}</a></td>
                         <td> {{room.description}} </td>
                         <td> {{room.category}} </td>
                         <td> {{room.price}} </td>
-                        <td><a href=" {{path ('room.modif', {id: room.id})}} " >   editer </a></td>
-                        <td><a href=" {{path ('room.delete', {id: room.id})}} " >    X </a></td>
-
+                        <td><a class="btn btn-outline-warning btn-sm" href=" {{path ('room.modif', {id: room.id})}} " >   modifier </a></td>
+                        <td><a class="btn btn-outline-danger btn-sm" href=" {{path ('room.delete', {id: room.id})}} " >    Supprimer </a></td>
+                    
+                    {% endif %}
+                    
+                    {#{% endif %}#}
+                    {##}
                     </tr>
                 {% endfor %}
             </tbody>
