@@ -42,6 +42,7 @@ class RoomController extends AbstractController
 
 
     public function create(Request $request){
+        $this->denyAccessUnlessGranted('ROLE_MANAGER');
         $room = new Room();
         // form
         $form = $this->createForm(RoomType::class, $room);
@@ -108,6 +109,7 @@ class RoomController extends AbstractController
      */
 
     public function delete($id, RoomRepository $rr ){
+        $this->denyAccessUnlessGranted('ROLE_MANAGER');
         $em = $this->getDoctrine()->getManager();
         $room = $rr->find($id);
         $em->remove($room);
@@ -155,9 +157,11 @@ class RoomController extends AbstractController
 
     /**
      * @Route("/modif/{id}", name="modif", methods={"GET", "POST"})
+     * 
      */
     public function edit(Request $request, Room $room, RoomRepository $roomRep): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_MANAGER');
         $form = $this->createForm(RoomType::class, $room);
         $form->handleRequest($request);
 
@@ -165,6 +169,31 @@ class RoomController extends AbstractController
             $roomRep->add($room);
 
             //----------
+            //----------image
+            $em = $this->getDoctrine()->getManager();
+            //$image = $request->files->get('room')['image'];
+            $images = $form->get('image')->getData();
+            
+            foreach($images as $image){
+                $filename = md5(uniqid()). '.'. $image->guessExtension();
+
+                $image->move(
+                    $this->getParameter('images_folder'),
+                    $filename
+                );
+
+                
+                $room->setImage($filename);
+            }
+            
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($room);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('room.edit'));
+
+            //------------
             //galerie
             $galeries = $form->get('galeries')->getData();
 
@@ -204,6 +233,7 @@ class RoomController extends AbstractController
   */
   
   public function deleteImage(Galerie $gal, Request $request){
+    $this->denyAccessUnlessGranted('ROLE_MANAGER');
       $data = json_decode($request->getContent(), true);
       
       // vérifier si le token est valide
