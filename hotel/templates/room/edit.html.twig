@@ -3,8 +3,10 @@
 {% block title %}Edit room{% endblock %}
 
 {% block body %}
+{% if is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN') %}
 <div class="container" >
     <h1>Editer Chambre</h1>
+
 
     {{ include('liste/_form.html.twig', {'button_label': 'Editer'}) }}
     
@@ -30,6 +32,7 @@
 
     
 </div>
+{% endif %}
     <script src=" {{ asset('js/galeries.js') }} "></script>
 {% endblock %}
 {% block javascripts %}

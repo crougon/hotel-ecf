@@ -28,7 +28,7 @@ class RoomController extends AbstractController
 {
     /**
      * @Route("/", name="edit")
-     * @IsGranted("ROLE_MANAGER")
+     * 
      * 
      */
     public function index(RoomRepository $ro): Response
@@ -43,7 +43,7 @@ class RoomController extends AbstractController
 
     /**
      * @Route("/create", name="create")
-     * @IsGranted("ROLE_MANAGER")
+     * 
      */
 
 
@@ -163,7 +163,7 @@ class RoomController extends AbstractController
 
     /**
      * @Route("/modif/{id}", name="modif", methods={"GET", "POST"})
-     * @IsGranted("ROLE_MANAGER")
+     * 
      * 
      */
     public function edit(Request $request, Room $room, RoomRepository $roomRep): Response
