@@ -18,7 +18,7 @@
     <table class="table table-striped" >
         <thead>
             <tr>
-                <td>Chambre</td> 
+                <td>Suite</td> 
                 <td>Hotel</td> 
                 <td>Client</td>    
                 <td>Entrée</td>    
@@ -44,7 +44,7 @@
                         <td> {{re.dateout|date("m/d/Y")}} </td> 
                         <td> {{re.email}} </td>
                         
-                        <td><a href=" {{path ('reservationsreservedDelete', {id: re.id})}} " >    X </a></td>
+                        <td><a class="btn btn-outline-danger btn-sm" href=" {{path ('reservationsreservedDelete', {id: re.id})}} " >  Supprimer   </a></td>
                         
                     </tr>
                 

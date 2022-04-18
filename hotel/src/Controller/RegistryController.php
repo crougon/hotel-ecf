@@ -40,7 +40,7 @@ class RegistryController extends AbstractController
             'required' => true,
             'first_options' => ['label' => 'Mot de passe', 
             'attr' => ['placeholder' => 'Mot de passe']],
-            'second_options' => ['label' => 'Repeter Mot de passe',
+            'second_options' => ['label' => 'Répéter Mot de passe',
             'attr' => ['placeholder' => 'Mot de passe']]
         ])
         ->add('Enregistrer', SubmitType::class)
