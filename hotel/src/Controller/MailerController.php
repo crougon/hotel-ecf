@@ -22,7 +22,7 @@ class MailerController extends AbstractController
     {   
         $emailForm = $this->createFormBuilder()
             ->add('user', TextType::class, [
-            'label' => 'email',
+            'label' => 'Email',
             'attr' => ['placeholder' => 'Email']
         ])  
             ->add('message', TextareaType::class, [
