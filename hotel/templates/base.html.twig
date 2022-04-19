@@ -56,10 +56,13 @@
 			{% if is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN') %}
 			<li><a href="#">Gérant</a>
 				<ul class="sub-menu">
-					<li><a href="{{ path('room.edit')}}">Rooms</a></li>
+					<li><a href="{{ path('room.edit')}}">Suites</a></li>
 					<li><a href="{{ path('room.create')}}">Créer</a></li>
 					<li><a href="{{ path('reservationsreserved')}}">Réservations</a></li>
 					<li><a href="{{ path('liste')}}">Contacts</a></li>
+					{% if is_granted('ROLE_ADMIN') %}
+					<li><a href="{{ path('admin')}}">Admin</a></li>
+					{% endif %}	
 
 
 

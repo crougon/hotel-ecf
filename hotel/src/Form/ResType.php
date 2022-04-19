@@ -19,7 +19,7 @@ class ResType extends AbstractType
         ])
         ->add('dateout', DateType::class, [
             'widget' => 'choice',
-            'label' => 'Date d\'entrée'
+            'label' => 'Date d\'sortie'
         ])
         ->add('email', EmailType::class, [
             'label' => 'Email',

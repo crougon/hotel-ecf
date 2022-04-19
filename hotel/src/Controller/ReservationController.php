@@ -42,7 +42,8 @@ class ReservationController extends AbstractController
             ])
             ->add('dateout', DateType::class, [
                 'widget' => 'choice',
-                'label' => 'Date d\'entrée'
+                'label' => 'Date d\'sortie',
+                'attr' => ['placeholder' => 'Nom Prénom']
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email',

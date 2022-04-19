@@ -5,12 +5,13 @@
 {% block body %}
 {% if is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN') %}
 <div class="container" >
-    <h1>Editer Chambre</h1>
+    <h1>Modifier Suite</h1>
 
 
     {{ include('liste/_form.html.twig', {'button_label': 'Editer'}) }}
     
     <h2> Galerie </h2>
+    <br>
 
    {% for image in liste.galeries  %}
        <div>
